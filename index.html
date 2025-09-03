@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Power BI Tabs - Retailing & Performance</title>
+  <style>
+    :root{--frame-w:900px; --frame-h:1500px;}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; background:#f7f7f9; color:#111; display:flex; align-items:center; justify-content:center; padding:32px}
+    .card{background:#fff;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.08);padding:18px;max-width:calc(var(--frame-w) + 40px)}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+    .tabs button{background:#eef2f7;border:0;padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:600}
+    .tabs button.active{background:#0b5fff;color:#fff}
+    .view{display:none}
+    .view.active{display:block}
+    .heading{font-size:18px;font-weight:700;margin:8px 0 12px}
+    iframe{width:var(--frame-w);height:var(--frame-h);border:1px solid #ddd;border-radius:6px}
+    .notice{font-size:13px;color:#555;margin-bottom:10px}
+    @media (max-width:940px){:root{--frame-w:360px;--frame-h:640px} .card{max-width:none}}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="tabs" role="tablist" aria-label="Power BI visual tabs">
+      <button id="tab-btn-1" class="active" onclick="showTab(1)" role="tab" aria-controls="tab-1">Retailing Graphs</button>
+      <button id="tab-btn-2" onclick="showTab(2)" role="tab" aria-controls="tab-2">Horeca Performance</button>
+      <button id="tab-btn-3" onclick="showTab(3)" role="tab" aria-controls="tab-3">QPS Performance</button>
+      <button id="tab-btn-4" onclick="showTab(4)" role="tab" aria-controls="tab-4">VanMarket Performance</button>
+      <button id="tab-btn-5" onclick="showTab(5)" role="tab" aria-controls="tab-5">Unproductive Outlets per Employee</button>
+    </div>
+
+    <div class="notice">Replace the <code>src="EMBED_URL_x"</code> values below with your Power BI "Publish to web" or embed URL. Iframes are sized to <strong>900 × 1500 px</strong> (desktop). Mobile will use a smaller size automatically.</div>
+
+    <div id="tab-1" class="view active" role="tabpanel" aria-labelledby="tab-btn-1">
+      <div class="heading">Retailing Graphs</div>
+      <!-- REPLACE EMBED_URL_1 with your PowerBI embed link -->
+      <iframe src="EMBED_URL_1" title="Retailing Graphs" allowfullscreen sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+
+    <div id="tab-2" class="view" role="tabpanel" aria-labelledby="tab-btn-2">
+      <div class="heading">Horeca Performance</div>
+      <!-- REPLACE EMBED_URL_2 with your PowerBI embed link -->
+      <iframe src="EMBED_URL_2" title="Horeca Performance" allowfullscreen sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+
+    <div id="tab-3" class="view" role="tabpanel" aria-labelledby="tab-btn-3">
+      <div class="heading">QPS Performance</div>
+      <!-- REPLACE EMBED_URL_3 with your PowerBI embed link -->
+      <iframe src="EMBED_URL_3" title="QPS Performance" allowfullscreen sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+
+    <div id="tab-4" class="view" role="tabpanel" aria-labelledby="tab-btn-4">
+      <div class="heading">VanMarket Performance</div>
+      <!-- REPLACE EMBED_URL_4 with your PowerBI embed link -->
+      <iframe src="EMBED_URL_4" title="VanMarket Performance" allowfullscreen sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+
+    <div id="tab-5" class="view" role="tabpanel" aria-labelledby="tab-btn-5">
+      <div class="heading">Unproductive Outlets per Employee</div>
+      <!-- REPLACE EMBED_URL_5 with your PowerBI embed link -->
+      <iframe src="EMBED_URL_5" title="Unproductive Outlets per Employee" allowfullscreen sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function showTab(n){
+      const views = document.querySelectorAll('.view');
+      const buttons = document.querySelectorAll('.tabs button');
+      views.forEach(v => v.classList.remove('active'));
+      buttons.forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-'+n).classList.add('active');
+      document.getElementById('tab-btn-'+n).classList.add('active');
+      // for accessibility: set focus to the active panel
+      document.getElementById('tab-'+n).focus();
+    }
+  </script>
+</body>
+</html>
